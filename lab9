@@ -1,0 +1,3 @@
+#Sameer Jain lab 9
+number_file="/home/students/sameejain/phones.txt"
+tr : '\t' < $number_file | sort -k2

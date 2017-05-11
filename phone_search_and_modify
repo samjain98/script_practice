@@ -1,0 +1,19 @@
+#adds user to phone book
+
+#give information to the user for how to use the command
+if [ "$1" = "-?" ]
+then
+	echo "
+	This command is used to search for an entry in the phone book or to modify an existing entry in the phone book. 
+
+	You specify that you're modifying or searching through the flags. The -m flag specifies that you are modifying, while the -s flag specifies that you are searching.
+
+	Usage of flags:
+
+	phone_search_and_modify -m FirstName
+	phone_search_and_modify -s SearchQuery
+
+	You will be prompted to specify your own directory. If you want to use the default directory at ~isaacs/class/unix.part2/phone.txt, enter nothing when promtped."
+
+fi
+

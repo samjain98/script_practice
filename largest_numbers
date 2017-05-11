@@ -1,0 +1,16 @@
+#Sameer Jain lab 11
+
+#set first value to highest
+highest=$1
+
+#go through all parameters, replace variable highest with highest variable as array is traversed
+for val in $@
+do
+	if [ $highest -lt $val ]
+	then
+		highest=$val
+	fi
+done
+
+#print highest number
+echo $highest

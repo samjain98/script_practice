@@ -1,0 +1,5 @@
+#! /bin/bash
+#lab 8 commands by Sameer Jain
+cut -f5 -d: /etc/passwd|sort -k2 | grep "^[A-G]" > /tmp/sorted_names
+cut -f5 -d: /etc/passwd|sort -k2 | grep -c "^[A-G]" >> /tmp/sorted_names
+cat /tmp/sorted_names

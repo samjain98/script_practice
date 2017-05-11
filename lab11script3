@@ -1,0 +1,41 @@
+#Sameer Jain lab 11
+
+location=$1
+
+#count and print directories
+directories=$(ls -l $location | grep "^d" | wc -l)
+echo "there are $directories directories in the location specified"
+
+#count and print regular files 
+regulars=$(ls -l $location | grep "^-" | wc -l)
+echo "there are $regulars regular files in the location specified"
+
+#count and print other files
+others=$(ls -l | grep "^[^d-]" | wc -l)
+echo "there are $others other files in the location specified"
+
+#for all of the lines in the ls-l output, take the permissions and file names
+ls -l $location | tr -s " " | cut -d" " -f1,9 | while read line
+
+do
+	#extract file names, permissions, and finally the permissions for other
+	file_name=${line##* }
+	permissions=${line% *}
+	other=${permissions: -3}
+
+	#check the characters that the permissions for other contain, and display accordingly
+	if [[ $other == *"r"* ]]
+	then
+		echo "$file_name has read permissions by other"
+	fi
+
+	if [[ $other == *"w"* ]]
+	then
+		echo "$file_name has write permissions by other"
+	fi
+
+	if [[ $other == *"x"* ]]
+	then
+		echo "$file_name has execute permissions by other"
+	fi
+done

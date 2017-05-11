@@ -1,0 +1,16 @@
+#Sameer Jain lab 10
+if [ $1 -lt 12 ]
+then
+	echo "good morning"
+
+elif [ $1 -lt 19 ]
+then
+	echo "good afternoon"
+
+elif [ $1 -lt 25 ]
+then
+	echo "good evening"
+
+else
+	echo "enter the correct time"
+fi

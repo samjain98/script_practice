@@ -1,0 +1,70 @@
+#searches for users in the phone book
+
+#give information to the user for how to use the command
+if [ "$1" = "-?" ]
+then
+	echo "
+	This command is used to search for users in the phone.txt file. 
+	You can provide the file location as a parameter. If a directory is not provided, the default directory at ~isaacs/class/unix.part2/phone.txt will be used. 
+
+	Use the -p flag to print out the full contents of the phone.txt file. If you use a custom phone.txt location, put it after the -p flag.
+
+	Usage of -p flag: 
+	phone_user_add -p directory OR phone_user_add -p"
+
+fi
+
+#if user wants phone.txt to be printed
+if [ "$1" = "-p" ]
+then
+
+	#if user does not provide location
+	if [ "$2" = "" ]
+	then
+		phone_location="/home/isaacs/class/unix.part2/phone.txt"
+		cat $phone_location
+
+	#if user does provide location
+	else
+		phone_location=$2
+		cat $phone_location
+	fi
+
+#if user does not want phone.txt to be printed and provides location
+elif [ ! "$1" = "" ]
+then
+	phone_location=$1
+
+#if user does not want phone.txt to be printed does not provide location
+else
+	phone_location="/home/isaacs/class/unix.part2/phone.txt"
+
+fi
+
+#check if we can read and write file
+if [ ! -w $phone_location ] 
+then
+	echo "Cannot write to given location"
+	exit
+fi
+
+if [ ! -r $phone_location ]
+then
+	echo "Cannot read given location"
+	exit
+fi
+
+#prompt for information
+echo "Enter first name"
+read first 
+
+echo "Enter last name"
+read last 
+
+echo "Enter number"
+read phone 
+
+echo "Enter email"
+read email 
+
+echo "$first:$last:$phone:$email" >> $phone_location

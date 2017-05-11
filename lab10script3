@@ -1,0 +1,10 @@
+#Sameer Jain lab 10
+highest=$1
+for val in $2 $3
+do
+	if [ $highest -lt $val ]
+	then
+		highest=$val
+	fi
+done
+echo $highest
